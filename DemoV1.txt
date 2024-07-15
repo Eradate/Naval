@@ -1,0 +1,567 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+game:GetService("GuiService"):ClearError()
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/thanhdat4461/OrionMoblie/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Nothing Hub", HidePremium = true, SaveConfig = true, ConfigFolder = "Orionz", IntroText ="Naval Warfare"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddLabel("Main Thing Fr!")
+
+Tab:AddButton({
+	Name = "Teleport Harbour",
+	Callback = function(Option)
+      		local args = {
+    [1] = "Teleport",
+    [2] = {
+        [1] = "Harbour",
+        [2] = ""
+    }
+}
+
+game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Teleport IslandA",
+	Callback = function(Option)
+      		local args = {
+    [1] = "Teleport",
+    [2] = {
+        [1] = "Island",
+        [2] = "A",
+        [3] = 0
+    }
+}
+
+game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Teleport IslandB",
+	Callback = function(Option)
+      		local args = {
+    [1] = "Teleport",
+    [2] = {
+        [1] = "Island",
+        [2] = "B",
+        [3] = 0
+    }
+}
+
+game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Teleport IslandC",
+	Callback = function(Option)
+      		local args = {
+    [1] = "Teleport",
+    [2] = {
+        [1] = "Island",
+        [2] = "C",
+        [3] = 0
+    }
+}
+
+game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+  	end    
+})
+
+Tab:AddLabel("For some reason it only works once :p")
+
+Tab:AddButton({
+	Name = "Teleport To Carrier USA",
+	Callback = function(Option)
+	  wait(0.0000000000000000001)
+    local str = "USA"
+ if str:match("USA") then 
+   instance = workspace.Carrier.Seat or workspace.Seat1ShipSeat1.Seat1
+ instance.Name = "Seat1"
+   task.wait(0.0000000000000001)
+   instance = workspace.Carrier or workspace.Seat1ShipSeat1
+ instance.Name = "Seat1ShipSeat1"
+   local character = game.Players.LocalPlayer.Character
+local humanoid = character:WaitForChild("Humanoid")
+local seat = game.Workspace.Seat1ShipSeat1.Seat1
+
+character:MoveTo(seat.Position)
+humanoid:Sit(seat)
+end
+	  
+	  
+  	end    
+})
+	  
+	Tab:AddButton({
+	Name = "Teleport To Carrier Japan",
+	Callback = function(Option)
+--// Japan
+  print("Right Team")
+    local str = "Japan"
+ if str:match("Japan") then 
+   instance = workspace.Carrier.Seat or workspace.Seat2
+ instance.Name = "Seat2"
+   task.wait(0.0000000000000001)
+   instance = workspace.Carrier or workspace.Seat2Ship
+ instance.Name = "Seat2Ship"
+   local character = game.Players.LocalPlayer.Character
+local humanoid = character:WaitForChild("Humanoid")
+local seat = game.Workspace.Seat2Ship.Seat2
+
+character:MoveTo(seat.Position)
+humanoid:Sit(seat)
+end  
+	  
+	  
+  	end    
+})
+	  
+	  
+
+
+Tab:AddButton({
+	Name = "Teleport To BattleShip USA",
+	Callback = function(Option)
+      			  --// USA
+ if str:match("USA") then 
+   instance = workspace.Battleship.Seat or workspace.SeatUSAShip
+ instance.Name = "SeatUSAShip"
+   task.wait(0.0000000000000001)
+   local character = game.Players.LocalPlayer.Character
+local humanoid = character:WaitForChild("Humanoid")
+local seat = game.Workspace.Battleship.SeatUSAShip
+
+character:MoveTo(seat.Position)
+humanoid:Sit(seat)
+end
+	  
+	end
+})
+	  
+	Tab:AddButton({
+	Name = "Teleport To BattleShip Japan",
+	Callback = function(Option)
+--// Japan
+ if str:match("Japan") then 
+   instance = workspace.Battleship.Seat or SeatJapanShip
+ instance.Name = "SeatJapanShip"
+   task.wait(0.0000000000000001)
+   local character = game.Players.LocalPlayer.Character
+local humanoid = character:WaitForChild("Humanoid")
+local seat = game.Workspace.Battleship.SeatJapanShip
+
+character:MoveTo(seat.Position)
+humanoid:Sit(seat)
+end
+  	end    
+})
+	  
+	local Tab = Window:MakeTab({
+	Name = "Anti",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+	  
+
+	  
+	AK = Tab:AddToggle({
+                    Name = "Anti Kick",
+                    Default = false,
+                    Callback = function(Value)
+AntiKick = Value
+while AntiKick do
+for i,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetDescendants()) do
+                    if v.Name == "ErrorPrompt" then
+AK:Set(false)
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+                    end
+                end
+task.wait()
+end
+end
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Secondary",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddParagraph("!","Non-Important.")
+	  
+Tab:AddTextbox({
+	Name = "Teleport to player",
+	Default = "PlayerName",
+	TextDisappear = true,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Value].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,1)
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Hitbox Expander",
+	Callback = function()
+      		_G.HeadSize = 20
+_G.Disabled = true
+ 
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 1
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+  	end    
+})
+
+Tab:AddButton({
+	Name = "ESP",
+	Callback = function()
+      		getgenv().enabled = true --Toggle on/off
+getgenv().filluseteamcolor = true --Toggle fill color using player team color on/off
+getgenv().outlineuseteamcolor = true --Toggle outline color using player team color on/off
+getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
+getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
+getgenv().filltrans = 0.7 --Change fill transparency
+getgenv().outlinetrans = 0.3 --Change outline transparency
+ 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zntly/highlight-esp/main/esp.lua"))()
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Selfs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddParagraph("!","Player toggles.")
+	  
+	  Tab:AddTextbox({
+	Name = "Fly",
+	Default = "Speed",
+	TextDisappear = true,
+	Callback = function(Value)
+		 speeds = Value
+
+local speaker = game:GetService("Players").LocalPlayer
+
+local chr = game.Players.LocalPlayer.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+
+nowe = false
+
+if nowe == true then
+		nowe = false
+
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
+		speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+	else 
+		nowe = true
+
+
+
+		for i = 1, speeds do
+			spawn(function()
+
+				local hb = game:GetService("RunService").Heartbeat	
+
+
+				tpwalking = true
+				local chr = game.Players.LocalPlayer.Character
+				local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+				while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+					if hum.MoveDirection.Magnitude > 0 then
+						chr:TranslateBy(hum.MoveDirection)
+					end
+				end
+
+			end)
+		end
+		game.Players.LocalPlayer.Character.Animate.Disabled = true
+		local Char = game.Players.LocalPlayer.Character
+		local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+
+		for i,v in next, Hum:GetPlayingAnimationTracks() do
+			v:AdjustSpeed(0)
+		end
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
+		speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
+		speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+	end
+
+
+
+
+	if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+
+
+
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Torso
+		local flying = true
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = 50
+		local speed = 0
+
+
+		local bg = Instance.new("BodyGyro", torso)
+		bg.P = 9e4
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+		bg.cframe = torso.CFrame
+		local bv = Instance.new("BodyVelocity", torso)
+		bv.velocity = Vector3.new(0,0.1,0)
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+		if nowe == true then
+			plr.Character.Humanoid.PlatformStand = true
+		end
+		while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+			game:GetService("RunService").RenderStepped:Wait()
+
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+				speed = speed+.5+(speed/maxspeed)
+				if speed > maxspeed then
+					speed = maxspeed
+				end
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+				speed = speed-1
+				if speed < 0 then
+					speed = 0
+				end
+			end
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+			else
+				bv.velocity = Vector3.new(0,0,0)
+			end
+			--	game.Players.LocalPlayer.Character.Animate.Disabled = true
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+		end
+		ctrl = {f = 0, b = 0, l = 0, r = 0}
+		lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		speed = 0
+		bg:Destroy()
+		bv:Destroy()
+		plr.Character.Humanoid.PlatformStand = false
+		game.Players.LocalPlayer.Character.Animate.Disabled = false
+		tpwalking = false
+
+
+
+
+	else
+		local plr = game.Players.LocalPlayer
+		local UpperTorso = plr.Character.UpperTorso
+		local flying = true
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = 50
+		local speed = 0
+
+
+		local bg = Instance.new("BodyGyro", UpperTorso)
+		bg.P = 9e4
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+		bg.cframe = UpperTorso.CFrame
+		local bv = Instance.new("BodyVelocity", UpperTorso)
+		bv.velocity = Vector3.new(0,0.1,0)
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+		if nowe == true then
+			plr.Character.Humanoid.PlatformStand = true
+		end
+		while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+			wait()
+
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+				speed = speed+.5+(speed/maxspeed)
+				if speed > maxspeed then
+					speed = maxspeed
+				end
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+				speed = speed-1
+				if speed < 0 then
+					speed = 0
+				end
+			end
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+			else
+				bv.velocity = Vector3.new(0,0,0)
+			end
+
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+		end
+		ctrl = {f = 0, b = 0, l = 0, r = 0}
+		lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		speed = 0
+		bg:Destroy()
+		bv:Destroy()
+		plr.Character.Humanoid.PlatformStand = false
+		game.Players.LocalPlayer.Character.Animate.Disabled = false
+		tpwalking = false
+
+
+
+	end
+
+	end	  
+})
+	  
+	  
+
+Tab:AddSlider({
+	Name = "Walkspeed",
+	Min = 20,
+	Max = 1000,
+	Default = 20,
+	Color = Color3.fromRGB(255, 0, 0),
+	Increment = 1,
+	ValueName = "WS",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+Walkspeed = Value
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Keep Walkspeed",
+	Default = false,
+	Callback = function(Value)
+KeepWalkspeed = Value
+            while KeepWalkspeed do
+                if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Players.LocalPlayer.Character.Humanoid.WalkSpeed ~= Walkspeed then
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Walkspeed
+                end
+task.wait()
+            end
+	end    
+})
+
+Tab:AddSlider({
+	Name = "Jumppower",
+	Min = 50,
+	Max = 1000,
+	Default = 50,
+	Color = Color3.fromRGB(0, 255, 0),
+	Increment = 1,
+	ValueName = "JP",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+Jumppower = Value
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Keep Jumppower",
+	Default = false,
+	Callback = function(Value)
+KeepJumppower = Value
+            while KeepJumppower do
+                if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Players.LocalPlayer.Character.Humanoid.WalkSpeed ~= Jumppower then
+                    game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jumppower
+                end
+task.wait()
+            end
+	end    
+})
+
+Tab:AddButton({
+	Name = "Unlock FPS",
+  Callback = function()
+repeat task.wait() until game:IsLoaded();
+
+getgenv().boostFPS = true
+
+local vim = game:GetService("VirtualInputManager")
+setfpscap(5000)
+
+game.DescendantAdded:Connect(function(d)
+  if d.Name == "MainView" and d.Parent.Name == "DevConsoleUI" and boostFPS then
+      task.wait()
+      local screen = d.Parent.Parent.Parent
+      screen.Enabled = false;
+  end
+end)
+    
+vim:SendKeyEvent(true, "F9", 0, game)    
+wait()
+vim:SendKeyEvent(false, "F9", 0, game)  
+
+while true do
+  task.wait()
+  if not boostFPS then
+      continue;
+  end
+ 
+
+  warn("")
+ 
+  if not game:GetService("CoreGui"):FindFirstChild("DevConsoleUI", true):FindFirstChild("MainView") then
+       vim:SendKeyEvent(true, "F9", 0, game)    
+        wait()
+        vim:SendKeyEvent(false, "F9", 0, game)  
+        continue
+    end
+end
+  	end    
+})
+
+
+
+OrionLib:Init()
